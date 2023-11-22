@@ -52,13 +52,21 @@ a {
 }
 
 button {
-    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
     border: none;
+    cursor: pointer;
     outline: none;
-    transition-duration: 0.3s;
+    position: relative;
+    transition-duration: 0.5s;
 }
 
 button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #2980b9;
 }
+/* 
+.pizza-hover:hover {
+    cursor: url("./img/cursor.png"), auto;
+} */

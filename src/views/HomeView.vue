@@ -3,6 +3,7 @@ import { ref } from "vue"
 
 import PizzaRain from "@/components/PizzaRain.vue"
 import GiantPizzaVue from "@/components/GiantPizza.vue"
+// import ButtonSauce from "@/components/ButtonSauce.vue"
 
 const username = ref("")
 </script>
@@ -16,6 +17,7 @@ const username = ref("")
             <input type="text" v-model="username" placeholder="Enter your username" />
             <button>Join a Room</button>
             <button>Create a Room</button>
+            <!-- <ButtonSauce /> -->
         </div>
     </main>
 </template>

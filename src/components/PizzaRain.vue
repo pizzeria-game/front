@@ -20,7 +20,7 @@ const createPizza = () => {
             if (!pizzaContainer.value) return
 
             pizzaContainer.value.removeChild(pizza)
-        }, 6000)
+        }, 8000)
     }
 }
 
