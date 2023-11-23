@@ -7,6 +7,11 @@
   resolved "https://registry.npmjs.org/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
+"@alvarosabu/utils@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@alvarosabu/utils/-/utils-3.1.1.tgz#9d8891d86f7797b8d2d8025d41cb74e87fd19ade"
+  integrity sha512-DdZNe0i0UsqA2X/+JtaznG4qGorU24FaHqxMAhVspQaC1my+YAVQLpfw8GilHpzMxPxX4sGVzuTnBF8GOdG5oA==
+
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.2.1.tgz"
@@ -506,10 +511,23 @@
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.6.0.tgz"
   integrity sha512-2/U3GXA6YiPYQDLGwtGlnNgKYBSwCFIHf8Y9LUY5VATHdtbLlU0Y1R3QoBnT0aB4qv/BEiVVsj7LJXoQCgJ2vA==
 
+"@tresjs/core@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@tresjs/core/-/core-3.5.0.tgz#99243236afe4b58d65c7b494b61375c94bfb476f"
+  integrity sha512-kh9QoLMWfkO2V4lytdJTARhfpC+Hf8JH/aTLsqYOirhHla4tTahQn5lHVrFwgkYjES/Qwr+UX84U2J6CQHBT3g==
+  dependencies:
+    "@alvarosabu/utils" "^3.1.1"
+    "@vueuse/core" "^10.3.0"
+
 "@tsconfig/node18@^18.2.2":
   version "18.2.2"
   resolved "https://registry.npmjs.org/@tsconfig/node18/-/node18-18.2.2.tgz"
   integrity sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==
+
+"@tweenjs/tween.js@^21.0.0":
+  version "21.0.0"
+  resolved "https://registry.yarnpkg.com/@tweenjs/tween.js/-/tween.js-21.0.0.tgz#73f993c2d1de37b78b4c1246163e20bc6ae3b75e"
+  integrity sha512-qVfOiFh0U8ZSkLgA6tf7kj2MciqRbSCWaJZRwftVO7UbtVDNsZAXpWXqvCDtIefvjC83UJB+vHTDOGm5ibXjEA==
 
 "@types/json-schema@^7.0.12":
   version "7.0.15"
@@ -532,6 +550,31 @@
   version "7.5.6"
   resolved "https://registry.npmjs.org/@types/semver/-/semver-7.5.6.tgz"
   integrity sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==
+
+"@types/stats.js@*":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@types/stats.js/-/stats.js-0.17.3.tgz#705446e12ce0fad618557dd88236f51148b7a935"
+  integrity sha512-pXNfAD3KHOdif9EQXZ9deK82HVNaXP5ZIF5RP2QG6OQFNTaY2YIetfrE9t528vEreGQvEPRDDc8muaoYeK0SxQ==
+
+"@types/three@^0.158.3":
+  version "0.158.3"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.158.3.tgz#f53e26c50709c7f972934e4e8c1ca51add0cfa9f"
+  integrity sha512-6Qs1rUvLSbkJ4hlIe6/rdwIf61j1x2UKvGJg7s8KjswYsz1C1qDTs6voVXXB8kYaI0hgklgZgbZUupfL1l9xdA==
+  dependencies:
+    "@types/stats.js" "*"
+    "@types/webxr" "*"
+    fflate "~0.6.10"
+    meshoptimizer "~0.18.1"
+
+"@types/web-bluetooth@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@types/web-bluetooth/-/web-bluetooth-0.0.20.tgz#f066abfcd1cbe66267cdbbf0de010d8a41b41597"
+  integrity sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==
+
+"@types/webxr@*":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@types/webxr/-/webxr-0.5.10.tgz#19c76208ec015ca3f139505e14d94d6b740f518a"
+  integrity sha512-n3u5sqXQJhf1CS68mw3Wf16FQ4cRPNBBwdYLFzq3UddiADOim1Pn3Y6PBdDilz1vOJF3ybLxJ8ZEDlLIzrOQZg==
 
 "@typescript-eslint/eslint-plugin@^6.7.0":
   version "6.12.0"
@@ -832,6 +875,28 @@
   version "0.4.0"
   resolved "https://registry.npmjs.org/@vue/tsconfig/-/tsconfig-0.4.0.tgz"
   integrity sha512-CPuIReonid9+zOG/CGTT05FXrPYATEqoDGNrEaqS4hwcw5BUNM2FguC0mOwJD4Jr16UpRVl9N0pY3P+srIbqmg==
+
+"@vueuse/core@^10.3.0", "@vueuse/core@^10.6.1":
+  version "10.6.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.6.1.tgz#5b16d8238054c6983b6cb7cd77a78035f098dd89"
+  integrity sha512-Pc26IJbqgC9VG1u6VY/xrXXfxD33hnvxBnKrLlA2LJlyHII+BSrRoTPJgGYq7qZOu61itITFUnm6QbacwZ4H8Q==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.20"
+    "@vueuse/metadata" "10.6.1"
+    "@vueuse/shared" "10.6.1"
+    vue-demi ">=0.14.6"
+
+"@vueuse/metadata@10.6.1":
+  version "10.6.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.6.1.tgz#100faa0ced3c0ab4c014fb8e66e781e85e4eb88d"
+  integrity sha512-qhdwPI65Bgcj23e5lpGfQsxcy0bMjCAsUGoXkJ7DsoeDUdasbZ2DBa4dinFCOER3lF4gwUv+UD2AlA11zdzMFw==
+
+"@vueuse/shared@10.6.1":
+  version "10.6.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-10.6.1.tgz#1d9fc1e3f9083e45b59a693fc372bc50ad62a9e4"
+  integrity sha512-TECVDTIedFlL0NUfHWncf3zF9Gc4VfdxfQc8JFwoVZQmxpONhLxFrlm0eHQeidHj4rdTPL3KXJa0TZCk1wnc5Q==
+  dependencies:
+    vue-demi ">=0.14.6"
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -1362,6 +1427,11 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
+fflate@~0.6.10:
+  version "0.6.10"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.6.10.tgz#5f40f9659205936a2d18abf88b2e7781662b6d43"
+  integrity sha512-IQrh3lEPM93wVCEczc9SaAOvkmcoQn/G8Bo1e8ZPlY3X3bnAxWaBdvTdvM1hP62iZp0BXWDy4vTAy4fF0+Dlpg==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz"
@@ -1759,6 +1829,11 @@ merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
+
+meshoptimizer@~0.18.1:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/meshoptimizer/-/meshoptimizer-0.18.1.tgz#cdb90907f30a7b5b1190facd3b7ee6b7087797d8"
+  integrity sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==
 
 micromatch@^4.0.4:
   version "4.0.5"
@@ -2224,6 +2299,11 @@ text-table@^0.2.0:
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
+three@^0.158.0:
+  version "0.158.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.158.0.tgz#03ddd5b60ce9c31be8fb69f27a6d9efd49908ac3"
+  integrity sha512-TALj4EOpdDPF1henk2Q+s17K61uEAAWQ7TJB68nr7FKxqwyDr3msOt5IWdbGm4TaWKjrtWS8DJJWe9JnvsWOhQ==
+
 titleize@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/titleize/-/titleize-3.0.0.tgz"
@@ -2326,6 +2406,11 @@ vite@^4.4.11:
     rollup "^3.27.1"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vue-demi@>=0.14.6:
+  version "0.14.6"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.6.tgz#dc706582851dc1cdc17a0054f4fec2eb6df74c92"
+  integrity sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==
 
 vue-eslint-parser@^9.3.1:
   version "9.3.2"
