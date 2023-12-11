@@ -66,6 +66,13 @@ button {
 button:hover {
     background-color: #2980b9;
 }
+
+input {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem;
+}
+
 /* 
 .pizza-hover:hover {
     cursor: url("./img/cursor.png"), auto;

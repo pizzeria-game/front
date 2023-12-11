@@ -3,11 +3,31 @@ import { ref } from "vue"
 
 import PizzaRain from "@/components/PizzaRain.vue"
 import GiantPizzaVue from "@/components/GiantPizza.vue"
-import Popup from "@/components/BlackPopup.vue"
+import Popup from "@/components/ShowPopup.vue"
+import router from "@/router"
 
 const username = ref("")
 const showPopup = ref(false)
-const dialogContent = ref("")
+
+const handleClosePopup = () => {
+    showPopup.value = false
+}
+
+const handleJoinRoom = (e: Event) => {
+    e.preventDefault()
+
+    const { room } = e.target as typeof e.target & {
+        room: { value: string }
+    }
+
+    if (!room.value) return
+
+    router.push(`/room/${room.value}`)
+}
+
+const handleCreateRoom = () => {
+    router.push(`/room/1`)
+}
 </script>
 
 <template>
@@ -16,31 +36,23 @@ const dialogContent = ref("")
         <GiantPizzaVue />
         <div class="box">
             <h1>Welcome to PizzaGame</h1>
-            <input type="text" v-model="username" placeholder="Enter your username" />
 
-            <button
-                @click="
-                    () => {
-                        showPopup = true
-                        dialogContent = 'joinRoom'
-                    }
-                "
-            >
-                Join a Room
-            </button>
-            <button
-                @click="
-                    () => {
-                        showPopup = true
-                        dialogContent = 'createRoom'
-                    }
-                "
-            >
-                Create a Room
-            </button>
+            <div class="menu-btn">
+                <button @click="() => (showPopup = true)">Join a Room</button>
+                <button @click="handleCreateRoom">Create a Room</button>
+            </div>
         </div>
 
-        <Popup :show="showPopup" :content="dialogContent" @close="showPopup = false" />
+        <Popup :show="showPopup" :close="() => (showPopup = false)">
+            <h2>Join a Room</h2>
+            <form @submit="handleJoinRoom">
+                <input name="room" type="text" placeholder="Enter room name" required />
+                <div class="join-actions">
+                    <button @click="() => handleClosePopup()" type="button">Fermer</button>
+                    <button type="submit">Confirmer</button>
+                </div>
+            </form>
+        </Popup>
     </main>
 </template>
 
@@ -63,14 +75,10 @@ const dialogContent = ref("")
     z-index: 2;
 }
 
-input {
-    display: block;
-    margin: 1rem auto;
-    padding: 0.5rem;
-}
-
-button {
-    margin: 0.5rem auto;
-    padding: 0.5rem 1rem;
+.menu-btn,
+.join-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 </style>

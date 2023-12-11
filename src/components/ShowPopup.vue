@@ -1,6 +1,23 @@
+<script setup lang="ts">
+import { defineProps } from "vue"
+
+defineProps({
+    show: {
+        type: Boolean,
+        required: true
+    },
+    close: {
+        type: Function,
+        required: true
+    }
+})
+</script>
+
 <template>
     <div class="popup" v-show="show">
-        <div class="dialog-content" v-if="content === 'joinRoom'">
+        <div class="popup-black" @click="() => close()"></div>
+
+        <!-- <div class="dialog-content" v-if="content === 'joinRoom'">
             <h2>Join a Room</h2>
             <input type="text" placeholder="Enter room name" />
             <div class="dialog-actions">
@@ -15,23 +32,14 @@
                 <button @click="onClose">Fermer</button>
                 <button>Confirmer</button>
             </div>
+        </div> -->
+        <div class="popup-content">
+            <slot>
+                <p>Default Content</p>
+            </slot>
         </div>
     </div>
 </template>
-<script setup lang="ts">
-import { defineProps, defineEmits } from "vue"
-
-defineProps({
-    show: Boolean,
-    content: String
-})
-
-const emit = defineEmits(["close"])
-
-const onClose = () => {
-    emit("close")
-}
-</script>
 
 <style scoped>
 .popup {
@@ -40,37 +48,28 @@ const onClose = () => {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
 }
-
-.dialog-content {
+.popup-content {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    width: 300px;
+    width: 95vw;
+    max-width: 420px;
     text-align: center;
+    z-index: 10;
 }
 
-.dialog-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.dialog-actions button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+.popup-black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    text-transform: uppercase;
-}
-
-.dialog-actions button:hover {
-    background-color: #0056b3;
 }
 </style>

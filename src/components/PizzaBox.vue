@@ -59,7 +59,7 @@ const handleCollision = () => {
 
     if (!pizzaBox) return
 
-    for (const item of items) {
+    for (const item of Array.from(items)) {
         const collision = checkCollision(item, pizzaBox)
 
         if (collision.top && collision.bottom && collision.right && collision.left) {
