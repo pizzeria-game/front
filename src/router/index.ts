@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import HomeView from "../views/HomeView.vue"
-import RoomView from "../views/RoomView.vue"
-import GameView from "../views/GameView.vue"
+import HomeView from "@/views/HomeView.vue"
+import RoomView from "@/views/RoomView.vue"
+import GameView from "@/views/GameView.vue"
+import FinishView from "@/views/FinishView.vue"
 
 import { useLoaderState } from "@/store/isLoading"
 
@@ -24,6 +25,11 @@ const router = createRouter({
             path: "/game/:id",
             name: "game",
             component: GameView
+        },
+        {
+            path: "/finish/:id",
+            name: "finish",
+            component: FinishView
         }
     ]
 })

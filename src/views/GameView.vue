@@ -65,44 +65,46 @@ const changeScore = (value: number) => {
 </script>
 
 <template>
-    <PizzaBox :onTouchItem="onTouchItem" :onMissItem="onMissItem" />
-    <div class="items">
-        <div
-            v-for="item in items"
-            :key="item.id"
-            class="item"
-            :style="{
-                fontSize: `${item.size}px`,
-                left: `${item.positionX}%`,
-                animationDelay: `${item.delay}s`,
-                animationDuration: `${10 - score / 5}s`
-            }"
-            :data-id="item.id"
-        >
-            {{ item.item }}
+    <main>
+        <PizzaBox :onTouchItem="onTouchItem" :onMissItem="onMissItem" />
+        <div class="items">
+            <div
+                v-for="item in items"
+                :key="item.id"
+                class="item"
+                :style="{
+                    fontSize: `${item.size}px`,
+                    left: `${item.positionX}%`,
+                    animationDelay: `${item.delay}s`,
+                    animationDuration: `${10 - score / 5}s`
+                }"
+                :data-id="item.id"
+            >
+                {{ item.item }}
+            </div>
         </div>
-    </div>
-    <p
-        class="score"
-        :class="{
-            'score-positive': isScoreChanged === 'positive',
-            'score-negative': isScoreChanged === 'negative'
-        }"
-        :style="{ fontSize: `${14 + Math.floor(score / 5) * 2}px` }"
-    >
-        Score: {{ score }}
-    </p>
-    <div class="ranking">
-        <h2>Ranking</h2>
-        <ol>
-            <li>
-                <p class="ranking-user">
-                    <span>DevButant</span>
-                    <span>10</span>
-                </p>
-            </li>
-        </ol>
-    </div>
+        <p
+            class="score"
+            :class="{
+                'score-positive': isScoreChanged === 'positive',
+                'score-negative': isScoreChanged === 'negative'
+            }"
+            :style="{ fontSize: `${14 + Math.floor(score / 5) * 2}px` }"
+        >
+            Score: {{ score }}
+        </p>
+        <div class="ranking">
+            <h2>Ranking</h2>
+            <ol>
+                <li>
+                    <p class="ranking-user">
+                        <span>DevButant</span>
+                        <span>10</span>
+                    </p>
+                </li>
+            </ol>
+        </div>
+    </main>
 </template>
 
 <style scoped>
