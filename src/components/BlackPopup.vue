@@ -1,22 +1,35 @@
 <template>
     <div class="popup" v-show="show">
-        <!-- Vous pouvez mettre votre contenu ici -->
-        <button @click="onClose">Fermer</button>
-        <!-- Ajout d'un bouton de fermeture -->
+        <div class="dialog-content" v-if="content === 'joinRoom'">
+            <h2>Join a Room</h2>
+            <input type="text" placeholder="Enter room name" />
+            <div class="dialog-actions">
+                <button @click="onClose">Fermer</button>
+                <button>Confirmer</button>
+            </div>
+        </div>
+        <div class="dialog-content" v-else-if="content === 'createRoom'">
+            <h2>Create a Room</h2>
+            <input type="text" placeholder="Enter new room name" />
+            <div class="dialog-actions">
+                <button @click="onClose">Fermer</button>
+                <button>Confirmer</button>
+            </div>
+        </div>
     </div>
 </template>
-
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from "vue"
+import { defineProps, defineEmits } from "vue"
 
-const props = defineProps({
-    show: Boolean
+defineProps({
+    show: Boolean,
+    content: String
 })
 
-const emit = defineEmits(["close"]) // Ajout de 'close' à la liste d'événements que ce composant peut émettre
+const emit = defineEmits(["close"])
 
 const onClose = () => {
-    emit("close") // Evénement émis lorsque onClose est appelée
+    emit("close")
 }
 </script>
 
@@ -34,10 +47,30 @@ const onClose = () => {
     z-index: 5;
 }
 
-.contains {
-    background-color: black;
-    padding: 8rem;
-    border-radius: 4px;
+.dialog-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
     text-align: center;
+}
+
+.dialog-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dialog-actions button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.dialog-actions button:hover {
+    background-color: #0056b3;
 }
 </style>
