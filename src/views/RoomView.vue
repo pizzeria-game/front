@@ -2,6 +2,8 @@
 import { ref } from "vue"
 import { useRoute } from "vue-router"
 
+import router from "@/router"
+
 import PizzaRain from "@/components/PizzaRain.vue"
 import GiantPizzaVue from "@/components/GiantPizza.vue"
 
@@ -9,6 +11,11 @@ const route = useRoute()
 const ID = route.params.id
 
 const participants = ref(["DevButant", "RMZ", "Edofo"])
+
+const startGame = () => {
+    console.log("Game started")
+    router.push(`/game/${ID}`)
+}
 </script>
 
 <template>
@@ -23,7 +30,7 @@ const participants = ref(["DevButant", "RMZ", "Edofo"])
                     {{ participant }}
                 </li>
             </ul>
-            <button>Start Game</button>
+            <button @click="startGame">Start Game</button>
         </div>
     </main>
 </template>

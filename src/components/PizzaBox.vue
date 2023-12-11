@@ -5,6 +5,10 @@ const props = defineProps({
     onTouchItem: {
         type: Function,
         required: true
+    },
+    onMissItem: {
+        type: Function,
+        required: true
     }
 })
 
@@ -34,12 +38,19 @@ const checkCollision = (item: Element, pizzaBox: Element) => {
     const pizzaBoxRect = pizzaBox.getBoundingClientRect()
     const itemRect = item.getBoundingClientRect()
 
-    return (
-        pizzaBoxRect.top < itemRect.bottom &&
-        pizzaBoxRect.bottom > itemRect.bottom &&
-        pizzaBoxRect.right > itemRect.left &&
-        pizzaBoxRect.left < itemRect.right
-    )
+    return {
+        top: pizzaBoxRect.top < itemRect.bottom,
+        bottom: pizzaBoxRect.bottom > itemRect.bottom,
+        right: pizzaBoxRect.right > itemRect.left,
+        left: pizzaBoxRect.left < itemRect.right
+    }
+
+    // return (
+    //     pizzaBoxRect.top < itemRect.bottom &&
+    //     pizzaBoxRect.bottom > itemRect.bottom &&
+    //     pizzaBoxRect.right > itemRect.left &&
+    //     pizzaBoxRect.left < itemRect.right
+    // )
 }
 
 const handleCollision = () => {
@@ -49,10 +60,16 @@ const handleCollision = () => {
     if (!pizzaBox) return
 
     for (const item of items) {
-        if (checkCollision(item, pizzaBox)) {
-            console.log("Collision détectée")
+        const collision = checkCollision(item, pizzaBox)
+
+        if (collision.top && collision.bottom && collision.right && collision.left) {
             const itemId = item.getAttribute("data-id")
-            props.onTouchItem(Number(itemId))
+            return props.onTouchItem(Number(itemId))
+        }
+
+        if (!collision.bottom && collision.top) {
+            const itemId = item.getAttribute("data-id")
+            props.onMissItem(Number(itemId))
         }
     }
 }

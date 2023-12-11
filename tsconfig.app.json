@@ -8,6 +8,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vue", "three"],
+    "types": ["vue", "vite/client"],
+    "lib": ["WebWorker", "DOM", "ESNext"]
   }
 }
