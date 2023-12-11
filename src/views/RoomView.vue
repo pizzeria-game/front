@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import { ref } from "vue"
+import { useRoute } from "vue-router"
+
+import router from "@/router"
 
 import PizzaRain from "@/components/PizzaRain.vue"
 import GiantPizzaVue from "@/components/GiantPizza.vue"
-// import ButtonSauce from "@/components/ButtonSauce.vue"
 
-const username = ref("")
+const route = useRoute()
+const ID = route.params.id
+
+const participants = ref(["DevButant", "RMZ", "Edofo"])
+
+const startGame = () => {
+    console.log("Game started")
+    router.push(`/game/${ID}`)
+}
 </script>
 
 <template>
@@ -13,11 +23,14 @@ const username = ref("")
         <PizzaRain />
         <GiantPizzaVue />
         <div class="box">
-            <h1>Welcome to PizzaGame</h1>
-            <input type="text" v-model="username" placeholder="Enter your username" />
-            <button>Join a Room</button>
-            <button>Create a Room</button>
-            <!-- <ButtonSauce /> -->
+            <h1>Room {{ ID }}</h1>
+            <h2>Participants</h2>
+            <ul class="list">
+                <li v-for="participant in participants" :key="participant">
+                    {{ participant }}
+                </li>
+            </ul>
+            <button @click="startGame">Start Game</button>
         </div>
     </main>
 </template>
@@ -41,14 +54,16 @@ const username = ref("")
     z-index: 2;
 }
 
+.list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 15px 0;
+}
+
 input {
     display: block;
     margin: 1rem auto;
     padding: 0.5rem;
-}
-
-button {
-    margin: 0.5rem auto;
-    padding: 0.5rem 1rem;
 }
 </style>

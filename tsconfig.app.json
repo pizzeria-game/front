@@ -7,6 +7,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["vue", "vite/client"],
+    "lib": ["WebWorker", "DOM", "ESNext"]
   }
 }
