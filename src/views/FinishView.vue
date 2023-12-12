@@ -3,7 +3,9 @@ import PizzaRain from "@/components/PizzaRain.vue"
 import GiantPizzaVue from "@/components/GiantPizza.vue"
 
 import stringToColor from "@/utils/stringToColor"
+
 import { onMounted, ref, type Ref } from "vue"
+import { useRoute } from "vue-router"
 
 const participants = [
     "Edofo",
@@ -27,6 +29,9 @@ const winners1 = ref<string>("")
 const winners2 = ref<string>("")
 const winners3 = ref<string>("")
 
+const route = useRoute()
+const ID = route.params.id
+
 const generateRandomWinners = (winnerRef: Ref<String>, timeMax: number, timeStartDecrease: number) => {
     let speed = 100
     let time = 0
@@ -43,7 +48,7 @@ const generateRandomWinners = (winnerRef: Ref<String>, timeMax: number, timeStar
 
         setTimeout(changeWinners, speed)
 
-        if (time > timeStartDecrease) speed += 10
+        if (time > timeStartDecrease) speed += 20
 
         time += speed
     }
@@ -52,9 +57,9 @@ const generateRandomWinners = (winnerRef: Ref<String>, timeMax: number, timeStar
 }
 
 onMounted(() => {
-    generateRandomWinners(winners3, 5000, 0)
-    generateRandomWinners(winners2, 10000, 5000)
-    generateRandomWinners(winners1, 15000, 10000)
+    generateRandomWinners(winners3, 3000, 0)
+    generateRandomWinners(winners2, 5000, 3000)
+    generateRandomWinners(winners1, 8000, 5000)
 })
 </script>
 
@@ -67,21 +72,21 @@ onMounted(() => {
             <h1>Game Finish</h1>
 
             <div class="winners">
-                <div class="winner2" style="width: 30%">
+                <div class="winner2">
                     <div class="winner-card card-argent" v-bind:style="{ backgroundColor: stringToColor(winners2) }">
                         <p>{{ winners2 }}</p>
                     </div>
                     <h2>Winner 2</h2>
                     <h3>Score: 100</h3>
                 </div>
-                <div class="winner1" style="width: 35%">
+                <div class="winner1">
                     <div class="winner-card card-gold" v-bind:style="{ backgroundColor: stringToColor(winners1) }">
                         <p>{{ winners1 }}</p>
                     </div>
                     <h2>Winner 1</h2>
                     <h3>Score: 100</h3>
                 </div>
-                <div class="winner3" style="width: 25%">
+                <div class="winner3">
                     <div class="winner-card card-bronze" v-bind:style="{ backgroundColor: stringToColor(winners3) }">
                         <p>{{ winners3 }}</p>
                     </div>
@@ -89,8 +94,10 @@ onMounted(() => {
                     <h3>Score: 100</h3>
                 </div>
             </div>
-            <!-- <h2>Score: {{ score }}</h2> -->
-            <!-- <button @click="() => router.push('/')">Retour au menu</button> -->
+            <div class="btn">
+                <button @click="() => $router.push('/')">Retour au menu</button>
+                <button @click="() => $router.push(`/room/${ID}`)">Rejouer</button>
+            </div>
         </div>
     </main>
 </template>
@@ -118,6 +125,13 @@ onMounted(() => {
     width: 100%;
 }
 
+.winners > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
 .winner-card {
     display: flex;
     justify-content: center;
@@ -128,18 +142,30 @@ onMounted(() => {
     border-style: solid;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    align-self: center;
 }
 
 .card-gold {
+    width: 100%;
     border-color: gold;
 }
 
 .card-argent {
+    width: 95%;
     border-color: silver;
 }
 
 .card-bronze {
+    width: 90%;
     border-color: #cd7f32;
 }
+
+.btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
 </style>
-@/utils/stringToColor

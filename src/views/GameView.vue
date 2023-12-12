@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
 import PizzaBox from "@/components/PizzaBox.vue"
+import router from "@/router"
+import { useRoute } from "vue-router"
 
 type itemsType = {
     id: number
@@ -14,9 +16,13 @@ const items = ref<itemsType[]>([])
 const score = ref(0)
 const isScoreChanged = ref("none")
 
+const route = useRoute()
+const ID = route.params.id
+
 const generateRandomItem = () => {
     const items = ["🍅", "🧅", "🍄", "🍍", "🍟", "🍗", "🥓", "🥩", "🍖", "🥪", "🥫", "🥚", "🍳"]
-    const numbersOfItems = Math.floor(Math.random() * 20) + 10
+    // const numbersOfItems = Math.floor(Math.random() * 20) + 10
+    const numbersOfItems = 1
     const randomItems = []
     let cumulativeDelay = 0.5
     for (let i = 0; i < numbersOfItems; i++) {
@@ -38,24 +44,25 @@ onMounted(() => {
 })
 
 const onTouchItem = (item_id: number) => {
-    const item = items.value.find((item) => item.id === item_id)
-    if (!item) return
-
-    items.value = items.value.filter((item) => item.id !== item_id)
-    changeScore(1)
+    changeScore(item_id, 1)
 }
 
 const onMissItem = (item_id: number) => {
+    changeScore(item_id, -1)
+}
+
+const changeScore = (item_id: number, value: number) => {
     const item = items.value.find((item) => item.id === item_id)
     if (!item) return
 
     items.value = items.value.filter((item) => item.id !== item_id)
-    changeScore(-1)
-}
 
-const changeScore = (value: number) => {
     score.value += value
-    // check if value is positive or negative
+
+    if (items.value.length === 0) {
+        router.push(`/finish/${ID}`)
+    }
+
     isScoreChanged.value = value > 0 ? "positive" : "negative"
 
     setTimeout(() => {
