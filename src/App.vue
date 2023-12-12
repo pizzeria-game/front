@@ -11,7 +11,6 @@ const isLoading = useLoaderState()
 
 <template>
     <RouterView />
-    <!-- <Loader :active="loading" /> -->
     <Loader :active="isLoading.state" />
 </template>
 

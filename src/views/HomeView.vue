@@ -6,7 +6,6 @@ import GiantPizzaVue from "@/components/GiantPizza.vue"
 import Popup from "@/components/ShowPopup.vue"
 import router from "@/router"
 
-const username = ref("")
 const showPopup = ref(false)
 
 const handleClosePopup = () => {
