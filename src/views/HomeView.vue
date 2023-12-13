@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue"
 
+import { useMessageBox } from "@/store/messageBox"
+
 import PizzaRain from "@/components/PizzaRain.vue"
 import GiantPizzaVue from "@/components/GiantPizza.vue"
 import Popup from "@/components/ShowPopup.vue"
+
 import router from "@/router"
+
+const messageBox = useMessageBox()
 
 const showPopup = ref(false)
 
@@ -39,6 +44,50 @@ const handleCreateRoom = () => {
             <div class="menu-btn">
                 <button @click="() => (showPopup = true)">Join a Room</button>
                 <button @click="handleCreateRoom">Create a Room</button>
+                <button
+                    @click="
+                        () =>
+                            messageBox.addMessage({
+                                message: 'Hello Pizza',
+                                type: 'success'
+                            })
+                    "
+                >
+                    Add a message
+                </button>
+                <button
+                    @click="
+                        () =>
+                            messageBox.addMessage({
+                                message: 'Hello Pizza',
+                                type: 'warning'
+                            })
+                    "
+                >
+                    Add a message
+                </button>
+                <button
+                    @click="
+                        () =>
+                            messageBox.addMessage({
+                                message: 'Hello Pizza',
+                                type: 'error'
+                            })
+                    "
+                >
+                    Add a message
+                </button>
+                <button
+                    @click="
+                        () =>
+                            messageBox.addMessage({
+                                message: 'Hello Pizza',
+                                type: 'info'
+                            })
+                    "
+                >
+                    Add a message
+                </button>
             </div>
         </div>
 
